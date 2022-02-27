@@ -1,4 +1,4 @@
-package com.patrykkosieradzki.cryptobag.common.compose
+package com.patrykkosieradzki.cryptobag.common.ui.imageloading
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,9 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.patrykkosieradzki.cryptobag.common.compose.test", appContext.packageName)
+        assertEquals(
+            "com.patrykkosieradzki.cryptobag.common.ui.imageloading.test",
+            appContext.packageName
+        )
     }
 }
