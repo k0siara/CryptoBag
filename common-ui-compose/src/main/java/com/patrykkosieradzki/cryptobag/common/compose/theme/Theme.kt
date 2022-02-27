@@ -1,4 +1,4 @@
-package com.patrykkosieradzki.cryptobag.ui.theme
+package com.patrykkosieradzki.cryptobag.common.compose.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

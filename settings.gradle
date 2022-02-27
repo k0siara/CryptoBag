@@ -1,2 +1,4 @@
 rootProject.name = "CryptoBag"
 include ':app'
+include ':feature-home-ui'
+include ':common-ui-compose'
