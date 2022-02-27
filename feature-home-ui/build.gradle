@@ -46,6 +46,7 @@ android {
 
 dependencies {
     implementation project(':common-ui-compose')
+    implementation project(':feature-home-data')
 
     implementation Libs.AndroidX.coreKtx
     implementation Libs.AndroidX.appCompat
