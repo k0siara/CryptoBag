@@ -1,4 +1,4 @@
-package com.patrykkosieradzki.feature.home.data
+package com.patrykkosieradzki.cryptobag.feature.home.data
 
 import com.patrykkosieradzki.cryptobag.common.remote.service.CoinRankingService
 import com.patrykkosieradzki.feature.home.domain.repository.CoinRepository

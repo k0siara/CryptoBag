@@ -1,4 +1,4 @@
-package com.patrykkosieradzki.feature.home.data
+package com.patrykkosieradzki.cryptobag.data
 
 import org.junit.Test
 
