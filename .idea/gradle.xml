@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/common-remote" />
             <option value="$PROJECT_DIR$/common-ui-compose" />
             <option value="$PROJECT_DIR$/common-ui-imageloading" />
+            <option value="$PROJECT_DIR$/feature-coin-details-ui" />
             <option value="$PROJECT_DIR$/feature-home-data" />
             <option value="$PROJECT_DIR$/feature-home-domain" />
             <option value="$PROJECT_DIR$/feature-home-ui" />
