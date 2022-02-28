@@ -58,7 +58,14 @@ android {
     }
 }
 
+hilt {
+    enableAggregatingTask = true
+}
+
 dependencies {
+    implementation project(':utils')
+    implementation project(':feature-home-ui')
+
     implementation Libs.AndroidX.coreKtx
     implementation Libs.AndroidX.appCompat
     implementation Libs.material
@@ -81,16 +88,10 @@ dependencies {
 
     // Dependency injection
     implementation "com.google.dagger:hilt-android:2.37"
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
     kapt "com.google.dagger:hilt-android-compiler:2.37"
 
-    // Network
-    implementation Libs.SquareUp.retrofit
-    implementation Libs.SquareUp.moshiKotlin
-    implementation Libs.SquareUp.retrofitMoshiConverter
-    implementation Libs.SquareUp.moshiAdapters
-    implementation Libs.SquareUp.loggingInterceptor
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
 
     implementation("io.coil-kt:coil-compose:1.4.0")
     implementation("io.coil-kt:coil-svg:1.4.0")
