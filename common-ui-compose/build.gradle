@@ -4,6 +4,8 @@ import com.patrykkosieradzki.cryptobag.buildsrc.Versions
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -42,9 +44,20 @@ android {
     }
 }
 
+hilt {
+    enableAggregatingTask = true
+}
+
 dependencies {
     implementation Libs.AndroidX.coreKtx
     implementation Libs.AndroidX.appCompat
+
+    // Composer Framework
+    implementation 'com.github.k0siara:composer:0.0.1'
+
+    // Dependency injection
+    implementation "com.google.dagger:hilt-android:2.37"
+    kapt "com.google.dagger:hilt-android-compiler:2.37"
 
     implementation Libs.AndroidX.Compose.ui
     implementation "androidx.compose.ui:ui-tooling:1.1.0"

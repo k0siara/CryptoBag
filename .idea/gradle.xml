@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/feature-home-domain" />
             <option value="$PROJECT_DIR$/feature-home-ui" />
             <option value="$PROJECT_DIR$/utils" />
+            <option value="$PROJECT_DIR$/utils-android" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
