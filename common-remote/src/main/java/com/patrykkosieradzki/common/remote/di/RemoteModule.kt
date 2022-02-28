@@ -1,5 +1,7 @@
 package com.patrykkosieradzki.common.remote
 
+import com.patrykkosieradzki.common.remote.interceptor.ApiKeyInterceptor
+import com.patrykkosieradzki.common.remote.service.CoinRankingService
 import com.patrykkosieradzki.cryptobag.utils.AppConfiguration
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

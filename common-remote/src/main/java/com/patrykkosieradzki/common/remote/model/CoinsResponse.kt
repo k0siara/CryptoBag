@@ -1,4 +1,4 @@
-package com.patrykkosieradzki.common.remote
+package com.patrykkosieradzki.common.remote.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

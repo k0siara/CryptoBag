@@ -1,4 +1,4 @@
-package com.patrykkosieradzki.common.remote
+package com.patrykkosieradzki.common.remote.interceptor
 
 import okhttp3.Interceptor
 import okhttp3.Response

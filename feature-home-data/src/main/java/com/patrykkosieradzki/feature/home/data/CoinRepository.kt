@@ -1,6 +1,10 @@
 package com.patrykkosieradzki.feature.home.data
 
-import com.patrykkosieradzki.common.remote.*
+import com.patrykkosieradzki.common.remote.model.AllTimeHighResponse
+import com.patrykkosieradzki.common.remote.model.CoinResponse
+import com.patrykkosieradzki.common.remote.model.LinkResponse
+import com.patrykkosieradzki.common.remote.model.SupplyResponse
+import com.patrykkosieradzki.common.remote.service.CoinRankingService
 import com.patrykkosieradzki.feature.home.domain.repository.CoinRepository
 import com.patrykkosieradzki.feature.home.domain.model.AllTimeHigh
 import com.patrykkosieradzki.feature.home.domain.model.Coin
