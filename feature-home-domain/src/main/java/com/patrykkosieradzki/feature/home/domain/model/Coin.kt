@@ -1,5 +1,8 @@
 package com.patrykkosieradzki.feature.home.domain.model
 
+import com.patrykkosieradzki.cryptobag.utils.toNullableString
+import java.text.DecimalFormat
+
 data class Coin(
     val uuid: String?,
     val symbol: String?,
@@ -25,4 +28,12 @@ data class Coin(
     val numberOfExchanges: Long?,
     val priceAt: Long?,
     val allTimeHigh: AllTimeHigh?
-)
+) {
+    fun getFormattedPrice(): String = "$${PRICE_FORMAT.format(price.toBigDecimal())}"
+
+    fun getChangeInPercentage(): String = "${change.toNullableString()}%"
+
+    companion object {
+        val PRICE_FORMAT = DecimalFormat("#,###.00")
+    }
+}
