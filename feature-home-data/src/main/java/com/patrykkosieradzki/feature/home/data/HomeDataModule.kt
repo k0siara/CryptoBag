@@ -1,7 +1,9 @@
 package com.patrykkosieradzki.feature.home.data
 
 import com.patrykkosieradzki.common.remote.CoinRankingService
-import com.patrykkosieradzki.feature.home.domain.CoinRepository
+import com.patrykkosieradzki.feature.home.domain.repository.CoinRepository
+import com.patrykkosieradzki.feature.home.domain.usecase.GetCoinsUseCase
+import com.patrykkosieradzki.feature.home.domain.usecase.GetCoinsUseCaseImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +18,11 @@ object HomeDataModule {
     @Provides
     fun provideCoinRepository(coinRankingService: CoinRankingService): CoinRepository {
         return CoinApiRepository(coinRankingService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetCoinsUseCase(coinRepository: CoinRepository): GetCoinsUseCase {
+        return GetCoinsUseCaseImpl(coinRepository)
     }
 }

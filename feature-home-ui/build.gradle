@@ -75,6 +75,9 @@ dependencies {
     // Composer Framework
     implementation 'com.github.k0siara:composer:0.0.1'
 
+    implementation "androidx.paging:paging-runtime:3.1.0"
+    implementation "androidx.paging:paging-compose:1.0.0-alpha14"
+
     // Testing
     testImplementation Libs.JUnit.junit
     testImplementation Libs.AndroidX.Test.Ext.junit

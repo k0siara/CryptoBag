@@ -1,7 +1,7 @@
 package com.patrykkosieradzki.feature.home.data
 
 import com.patrykkosieradzki.common.remote.*
-import com.patrykkosieradzki.feature.home.domain.CoinRepository
+import com.patrykkosieradzki.feature.home.domain.repository.CoinRepository
 import com.patrykkosieradzki.feature.home.domain.model.AllTimeHigh
 import com.patrykkosieradzki.feature.home.domain.model.Coin
 import com.patrykkosieradzki.feature.home.domain.model.Link
@@ -10,7 +10,9 @@ import com.patrykkosieradzki.feature.home.domain.model.Supply
 internal class CoinApiRepository(
     private val coinRankingService: CoinRankingService
 ) : CoinRepository {
-    override suspend fun getCoins() = coinRankingService.getCoins().data.coins.toDomain()
+    override suspend fun getCoins(pageNumber: Int, loadSize: Int): List<Coin> {
+        return coinRankingService.getCoins(loadSize, pageNumber * loadSize).data.coins.toDomain()
+    }
     override suspend fun getCoinDetails(id: String): Coin {
         return coinRankingService.getCoinDetails(id).data.coin.toDomain()
     }
