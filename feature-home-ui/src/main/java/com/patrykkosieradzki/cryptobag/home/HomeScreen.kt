@@ -7,6 +7,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.ripple.rememberRipple
@@ -30,8 +31,7 @@ import com.patrykkosieradzki.cryptobag.common.ui.compose.shimmer.Shimmer
 import com.patrykkosieradzki.cryptobag.common.ui.compose.shimmer.ShimmerBounds
 import com.patrykkosieradzki.cryptobag.common.ui.compose.shimmer.rememberShimmer
 import com.patrykkosieradzki.cryptobag.common.ui.compose.shimmer.shimmer
-import com.patrykkosieradzki.cryptobag.common.ui.compose.theme.price
-import com.patrykkosieradzki.cryptobag.common.ui.compose.theme.shimmerGrey
+import com.patrykkosieradzki.cryptobag.common.ui.compose.theme.*
 import com.patrykkosieradzki.cryptobag.common.ui.imageloading.CryptoBagImage
 import com.patrykkosieradzki.cryptobag.utils.toNullableString
 import com.patrykkosieradzki.feature.home.domain.model.Coin
@@ -44,7 +44,7 @@ internal fun HomeScreen(
 
     SimpleUiStateView(viewModel) {
         HomeScreenContent(
-            onSearchClicked = {},
+            onSearchClicked = viewModel::onSearchClicked,
             coins = coins,
             onCoinClicked = viewModel::onCoinClicked
         )
@@ -76,12 +76,14 @@ internal fun HomeScreenContent(
                     )
 
                     IconButton(
+                        modifier = Modifier.background(lightGrey, shape = CircleShape),
                         onClick = onSearchClicked
                     ) {
                         Icon(
                             modifier = Modifier.size(28.dp),
                             painter = painterResource(id = R.drawable.ic_search_24),
-                            contentDescription = null
+                            contentDescription = null,
+                            tint = green
                         )
                     }
                 }
@@ -195,10 +197,12 @@ internal fun CoinListItem(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 coin.change?.let {
+                    val isDown = it.contains("-")
+
                     Icon(
                         painter = painterResource(
                             id = when {
-                                it.contains("-") -> R.drawable.ic_arrow_down_red_24
+                                isDown -> R.drawable.ic_arrow_down_red_24
                                 else -> R.drawable.ic_arrow_up_green_24
                             }
                         ),
@@ -206,7 +210,8 @@ internal fun CoinListItem(
                         tint = Color.Unspecified
                     )
                     Text(
-                        text = coin.getChangeInPercentage()
+                        text = coin.getChangeInPercentage(),
+                        color = if (isDown) red else green
                     )
                 }
             }
