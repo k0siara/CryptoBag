@@ -23,9 +23,4 @@ class HomeFragment : Fragment() {
             HomeScreen(viewModel)
         }
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.initialize()
-    }
 }

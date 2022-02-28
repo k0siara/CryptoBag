@@ -1,3 +1,6 @@
+import com.patrykkosieradzki.cryptobag.buildsrc.Libs
+import com.patrykkosieradzki.cryptobag.buildsrc.Versions
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -27,12 +30,30 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion= Versions.compose
+    }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
 }
 
 dependencies {
+    implementation(Libs.AndroidX.Compose.ui)
+    implementation("androidx.compose.ui:ui-tooling:1.1.0")
+    implementation("androidx.compose.foundation:foundation:1.1.0")
+    implementation(Libs.AndroidX.Compose.compiler)
+    implementation(Libs.AndroidX.Compose.material)
+    implementation(Libs.AndroidX.Compose.toolingPreview)
+    implementation(Libs.AndroidX.Lifecycle.lifeCycleRuntimeKtx)
+
+    implementation("io.coil-kt:coil-compose:1.4.0")
 
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.3.0")

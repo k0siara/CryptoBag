@@ -50,7 +50,9 @@ hilt {
 }
 
 dependencies {
+    implementation project(':utils')
     implementation project(':common-ui-compose')
+    implementation project(':common-ui-imageloading')
     implementation project(':feature-home-data')
     implementation project(':feature-home-domain')
 

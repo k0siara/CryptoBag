@@ -1,11 +1,9 @@
 package com.patrykkosieradzki.cryptobag.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
@@ -17,6 +15,8 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.patrykkosieradzki.composer.composables.SimpleUiStateView
+import com.patrykkosieradzki.cryptobag.common.ui.imageloading.ImageLoader
+import com.patrykkosieradzki.cryptobag.utils.toNullableString
 import com.patrykkosieradzki.feature.home.domain.model.Coin
 import java.math.RoundingMode
 
@@ -54,19 +54,18 @@ internal fun CoinListItem(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-//        Row(
-//            horizontalArrangement = Arrangement.spacedBy(10.dp)
-//        ) {
-//            Image(
-//                modifier = Modifier.size(50.dp),
-//                painter = rememberImagePainter(coin.iconUrl, LocalImageLoader.current),
-//                contentDescription = null
-//            )
-//            Column {
-//                Text(text = coin.symbol.toNullableString())
-//                Text(text = coin.name.toNullableString())
-//            }
-//        }
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            ImageLoader(
+                modifier = Modifier.size(50.dp),
+                url = coin.iconUrl
+            )
+            Column {
+                Text(text = coin.symbol.toNullableString())
+                Text(text = coin.name.toNullableString())
+            }
+        }
         Text(text = "$ ${coin.price.toBigDecimal().setScale(2, RoundingMode.HALF_EVEN)}")
     }
 }
