@@ -44,6 +44,11 @@ android {
     }
 }
 
+
+hilt {
+    enableAggregatingTask = true
+}
+
 dependencies {
     implementation project(':common-ui-compose')
     implementation project(':feature-home-data')

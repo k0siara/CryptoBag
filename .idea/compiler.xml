@@ -7,7 +7,7 @@
       <module name="CryptoBag.common-remote" target="11" />
       <module name="CryptoBag.common-ui-compose" target="11" />
       <module name="CryptoBag.common-ui-imageloading" target="11" />
-      <module name="CryptoBag.feature-home-data" target="1.8" />
+      <module name="CryptoBag.feature-home-data" target="11" />
       <module name="CryptoBag.feature-home-ui" target="11" />
     </bytecodeTargetLevel>
   </component>

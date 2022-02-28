@@ -58,6 +58,10 @@ android {
     }
 }
 
+hilt {
+    enableAggregatingTask = true
+}
+
 dependencies {
     implementation project(':utils')
     implementation project(':feature-home-ui')
