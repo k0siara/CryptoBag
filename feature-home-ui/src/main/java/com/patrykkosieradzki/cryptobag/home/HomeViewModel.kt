@@ -1,12 +1,11 @@
 package com.patrykkosieradzki.cryptobag.home
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.patrykkosieradzki.composer.core.state.simple.SimpleUiState
 import com.patrykkosieradzki.composer.core.state.simple.SimpleUiStateManager
 import com.patrykkosieradzki.composer.core.state.simple.SimpleUiStateManagerImpl
 import com.patrykkosieradzki.composer.extensions.launchWithExceptionHandler
-import com.patrykkosieradzki.feature.home.data.CoinRepository
+import com.patrykkosieradzki.feature.home.domain.CoinRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

@@ -52,6 +52,7 @@ hilt {
 dependencies {
     implementation project(':common-ui-compose')
     implementation project(':feature-home-data')
+    implementation project(':feature-home-domain')
 
     implementation Libs.AndroidX.coreKtx
     implementation Libs.AndroidX.appCompat

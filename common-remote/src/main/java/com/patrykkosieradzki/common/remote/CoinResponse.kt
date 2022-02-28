@@ -21,7 +21,7 @@ data class CoinResponse (
     @Json(name = "btcPrice") val btcPrice: String?,
     @Json(name = "description") val description: String?,
     @Json(name = "websiteURL") val websiteURL: String?,
-    @Json(name = "links") val links: List<LinkResponse>?,
+    @Json(name = "links") val links: List<LinkResponse> = emptyList(),
     @Json(name = "supply") val supply: SupplyResponse?,
     @Json(name = "numberOfMarkets") val numberOfMarkets: Long?,
     @Json(name = "numberOfExchanges") val numberOfExchanges: Long?,

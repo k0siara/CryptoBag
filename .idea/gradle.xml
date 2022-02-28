@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/common-ui-compose" />
             <option value="$PROJECT_DIR$/common-ui-imageloading" />
             <option value="$PROJECT_DIR$/feature-home-data" />
+            <option value="$PROJECT_DIR$/feature-home-domain" />
             <option value="$PROJECT_DIR$/feature-home-ui" />
             <option value="$PROJECT_DIR$/utils" />
           </set>

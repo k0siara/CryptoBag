@@ -33,6 +33,7 @@ android {
 
 dependencies {
     implementation(project(":common-remote"))
+    implementation(project(":feature-home-domain"))
 
     // Dependency injection
     implementation "com.google.dagger:hilt-android:2.37"

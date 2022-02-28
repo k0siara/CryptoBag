@@ -1,6 +1,7 @@
 package com.patrykkosieradzki.feature.home.data
 
 import com.patrykkosieradzki.common.remote.CoinRankingService
+import com.patrykkosieradzki.feature.home.domain.CoinRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
