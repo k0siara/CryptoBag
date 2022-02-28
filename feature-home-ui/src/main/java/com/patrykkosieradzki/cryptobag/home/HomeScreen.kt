@@ -1,6 +1,5 @@
 package com.patrykkosieradzki.cryptobag.home
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -15,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.patrykkosieradzki.composer.composables.SimpleUiStateView
-import com.patrykkosieradzki.cryptobag.common.ui.imageloading.ImageLoader
+import com.patrykkosieradzki.cryptobag.common.ui.imageloading.CryptoBagImage
 import com.patrykkosieradzki.cryptobag.utils.toNullableString
 import com.patrykkosieradzki.feature.home.domain.model.Coin
 import java.math.RoundingMode
@@ -57,7 +56,7 @@ internal fun CoinListItem(
         Row(
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            ImageLoader(
+            CryptoBagImage(
                 modifier = Modifier.size(50.dp),
                 url = coin.iconUrl
             )

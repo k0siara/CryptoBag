@@ -9,6 +9,7 @@
       <module name="CryptoBag.common-ui-imageloading" target="11" />
       <module name="CryptoBag.feature-home-data" target="11" />
       <module name="CryptoBag.feature-home-ui" target="11" />
+      <module name="CryptoBag.utils-android" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

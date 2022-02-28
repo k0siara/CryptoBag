@@ -1,6 +1,6 @@
 package com.patrykkosieradzki.feature.home.data
 
-import com.patrykkosieradzki.common.remote.service.CoinRankingService
+import com.patrykkosieradzki.cryptobag.common.remote.service.CoinRankingService
 import com.patrykkosieradzki.feature.home.domain.repository.CoinRepository
 import com.patrykkosieradzki.feature.home.domain.usecase.GetCoinsUseCase
 import com.patrykkosieradzki.feature.home.domain.usecase.GetCoinsUseCaseImpl

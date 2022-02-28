@@ -70,6 +70,8 @@ hilt {
 
 dependencies {
     implementation project(':utils')
+    implementation project(':utils-android')
+    implementation project(':common-ui-imageloading')
     implementation project(':feature-home-ui')
 
     implementation Libs.AndroidX.coreKtx
