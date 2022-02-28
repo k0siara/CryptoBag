@@ -14,7 +14,6 @@ import com.patrykkosieradzki.feature.home.domain.model.Coin
 import com.patrykkosieradzki.feature.home.domain.usecase.GetCoinsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,12 +27,12 @@ class HomeViewModel @Inject constructor(
         Pager(
             PagingConfig(
                 enablePlaceholders = true,
-                pageSize = 10
+                prefetchDistance = 20,
+                initialLoadSize = 100,
+                pageSize = 100
             ),
             pagingSourceFactory = { CoinsPagingSource(getCoinsUseCase, 0) }
-        ).flow.cachedIn(viewModelScope).onEach {
-            updateUiStateToSuccess()
-        }
+        ).flow.cachedIn(viewModelScope)
     }
 
     fun onSearchClicked() {

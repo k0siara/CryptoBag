@@ -17,12 +17,16 @@ class CoinsPagingSource(
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Coin> {
-        val pageNumber = params.key ?: startingPage
-        val result = getCoinsUseCase.invoke(pageNumber, params.loadSize)
-        return LoadResult.Page(
-            data = result,
-            prevKey = null, // Only paging forward.
-            nextKey = pageNumber + 1
-        )
+        return try {
+            val pageNumber = params.key ?: startingPage
+            val result = getCoinsUseCase.invoke(pageNumber, params.loadSize)
+            LoadResult.Page(
+                data = result,
+                prevKey = null, // Only paging forward.
+                nextKey = pageNumber + 1
+            )
+        } catch (error: Throwable) {
+            LoadResult.Error(error)
+        }
     }
 }
