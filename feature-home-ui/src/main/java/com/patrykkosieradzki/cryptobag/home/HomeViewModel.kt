@@ -20,7 +20,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val getCoinsUseCase: GetCoinsUseCase
 ) : ViewModel(),
-    SimpleUiStateManager by SimpleUiStateManagerImpl(initialState = SimpleUiState.Loading) {
+    SimpleUiStateManager by SimpleUiStateManagerImpl(initialState = SimpleUiState.Success) {
 
     val coins: Flow<PagingData<Coin>> by lazy {
         Pager(

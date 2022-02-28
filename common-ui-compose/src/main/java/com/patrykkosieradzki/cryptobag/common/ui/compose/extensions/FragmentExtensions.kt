@@ -1,4 +1,4 @@
-package com.patrykkosieradzki.cryptobag.common.ui.compose
+package com.patrykkosieradzki.cryptobag.common.ui.compose.extensions
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
