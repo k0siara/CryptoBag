@@ -3,6 +3,7 @@ package com.patrykkosieradzki.cryptobag.home
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.navOptions
 import androidx.paging.*
 import com.patrykkosieradzki.composer.core.state.simple.SimpleUiState
 import com.patrykkosieradzki.composer.core.state.simple.SimpleUiStateManager
@@ -12,6 +13,7 @@ import com.patrykkosieradzki.composer.navigation.NavigationManager
 import com.patrykkosieradzki.composer.navigation.NavigationManagerImpl
 import com.patrykkosieradzki.composer.toast.ToastManager
 import com.patrykkosieradzki.cryptobag.common.ui.compose.CryptoBagNavigation
+import com.patrykkosieradzki.cryptobag.common.ui.compose.R
 import com.patrykkosieradzki.feature.home.domain.model.Coin
 import com.patrykkosieradzki.feature.home.domain.usecase.GetCoinsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -53,7 +55,17 @@ class HomeViewModel @Inject constructor(
     fun onCoinClicked(coinId: String?) {
         coinId?.let {
             navigate(ComposerNavigationCommand.Custom {
-                it.navigate(Uri.parse(CryptoBagNavigation.buildCoinDetailsDeepLink(coinId)))
+                it.navigate(
+                    Uri.parse(CryptoBagNavigation.buildCoinDetailsDeepLink(coinId)),
+                    navOptions = navOptions {
+                        anim {
+                            enter = R.anim.slide_in_right
+                            exit = R.anim.slide_out_left
+                            popEnter = R.anim.slide_in_left
+                            popExit = R.anim.slide_out_right
+                        }
+                    }
+                )
             })
         }
     }
