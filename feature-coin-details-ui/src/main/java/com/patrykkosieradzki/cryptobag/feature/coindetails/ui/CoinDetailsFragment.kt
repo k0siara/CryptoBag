@@ -1,4 +1,4 @@
-package com.patrykkosieradzki.cryptobag.home
+package com.patrykkosieradzki.cryptobag.feature.coindetails.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,9 +11,9 @@ import com.patrykkosieradzki.cryptobag.common.ui.compose.extensions.cryptoBagCom
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class CoinDetailsFragment : Fragment() {
 
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: CoinDetailsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,7 +21,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         return cryptoBagComposeView {
-            HomeScreen(viewModel)
+            CoinDetailsScreen(viewModel)
         }
     }
 

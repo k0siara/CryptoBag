@@ -72,7 +72,9 @@ dependencies {
     implementation project(':utils')
     implementation project(':utils-android')
     implementation project(':common-ui-imageloading')
+
     implementation project(':feature-home-ui')
+    implementation project(':feature-coin-details-ui')
 
     implementation Libs.AndroidX.coreKtx
     implementation Libs.AndroidX.appCompat
