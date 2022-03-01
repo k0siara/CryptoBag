@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.patrykkosieradzki.composer.navigation.observeNavigation
 import com.patrykkosieradzki.cryptobag.common.ui.compose.extensions.cryptoBagComposeView
+import com.patrykkosieradzki.cryptobag.common.ui.compose.extensions.postponeEnterTransitionAndStartOnPreDraw
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,6 +28,8 @@ class CoinDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        postponeEnterTransitionAndStartOnPreDraw()
         viewModel.observeNavigation(this)
     }
 }

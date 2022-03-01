@@ -12,7 +12,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -35,17 +34,21 @@ import com.patrykkosieradzki.cryptobag.common.ui.compose.theme.*
 import com.patrykkosieradzki.cryptobag.common.ui.imageloading.CryptoBagImage
 import com.patrykkosieradzki.cryptobag.utils.toNullableString
 import com.patrykkosieradzki.feature.home.domain.model.Coin
+import com.patrykkosieradzki.composer.utils.asLifecycleAwareState
 
 @Composable
 internal fun HomeScreen(
     viewModel: HomeViewModel
 ) {
+    val refreshLoadState by viewModel.refreshLoadState.asLifecycleAwareState()
     val coins = viewModel.coins.collectAsLazyPagingItems()
 
     SimpleUiStateView(viewModel) {
         HomeScreenContent(
             onSearchClicked = viewModel::onSearchClicked,
             coins = coins,
+            refreshLoadState = refreshLoadState,
+            onRefreshLoadStateChange = viewModel::onRefreshLoadStateChange,
             onCoinClicked = viewModel::onCoinClicked
         )
     }
@@ -55,6 +58,8 @@ internal fun HomeScreen(
 internal fun HomeScreenContent(
     onSearchClicked: () -> Unit,
     coins: LazyPagingItems<Coin>,
+    refreshLoadState: LoadState,
+    onRefreshLoadStateChange: (LoadState) -> Unit,
     onCoinClicked: (String?) -> Unit
 ) {
     ScaffoldWithElevatedTopBarOnListScroll(
@@ -94,6 +99,8 @@ internal fun HomeScreenContent(
             paddingValues = paddingValues,
             lazyListState = lazyListState,
             coins = coins,
+            refreshLoadState = refreshLoadState,
+            onRefreshLoadStateChange = onRefreshLoadStateChange,
             onCoinClicked = onCoinClicked
         )
     }
@@ -104,13 +111,16 @@ fun CoinPagingList(
     paddingValues: PaddingValues,
     lazyListState: LazyListState,
     coins: LazyPagingItems<Coin>,
+    refreshLoadState: LoadState,
+    onRefreshLoadStateChange: (LoadState) -> Unit,
     onCoinClicked: (String?) -> Unit
 ) {
-    var refreshLoadState by remember { mutableStateOf<LoadState>(LoadState.Loading) }
     val shimmer = rememberShimmer(shimmerBounds = ShimmerBounds.View)
 
     LaunchedEffect(coins.loadState.refresh) {
-        refreshLoadState = coins.loadState.refresh
+        if (coins.loadState.refresh != refreshLoadState) {
+            onRefreshLoadStateChange.invoke(coins.loadState.refresh)
+        }
     }
 
     Crossfade(

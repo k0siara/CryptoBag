@@ -3,10 +3,7 @@ package com.patrykkosieradzki.cryptobag.home
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
+import androidx.paging.*
 import com.patrykkosieradzki.composer.core.state.simple.SimpleUiState
 import com.patrykkosieradzki.composer.core.state.simple.SimpleUiStateManager
 import com.patrykkosieradzki.composer.core.state.simple.SimpleUiStateManagerImpl
@@ -19,6 +16,8 @@ import com.patrykkosieradzki.feature.home.domain.model.Coin
 import com.patrykkosieradzki.feature.home.domain.usecase.GetCoinsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,6 +29,7 @@ class HomeViewModel @Inject constructor(
         initialState = SimpleUiState.Success
     ), NavigationManager by NavigationManagerImpl() {
 
+    val refreshLoadState = MutableStateFlow<LoadState>(LoadState.Loading)
     val coins: Flow<PagingData<Coin>> by lazy {
         Pager(
             PagingConfig(
@@ -40,6 +40,10 @@ class HomeViewModel @Inject constructor(
             ),
             pagingSourceFactory = { CoinsPagingSource(getCoinsUseCase, 0) }
         ).flow.cachedIn(viewModelScope)
+    }
+
+    fun onRefreshLoadStateChange(loadState: LoadState) {
+        refreshLoadState.update { loadState }
     }
 
     fun onSearchClicked() {
