@@ -1,6 +1,9 @@
 package com.patrykkosieradzki.cryptobag.home
 
 import androidx.compose.animation.Crossfade
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -18,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -54,6 +58,7 @@ internal fun HomeScreen(
     }
 }
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 internal fun HomeScreenContent(
     onSearchClicked: () -> Unit,
@@ -62,13 +67,34 @@ internal fun HomeScreenContent(
     onRefreshLoadStateChange: (LoadState) -> Unit,
     onCoinClicked: (String?) -> Unit
 ) {
+    var isCollapsed by remember { mutableStateOf(false) }
+    var lastFirstVisibleItemIndex by remember { mutableStateOf(0) }
+    val animateVerticalTopBarPadding by animateDpAsState(
+        targetValue = when {
+            isCollapsed -> 10.dp
+            else -> 30.dp
+        }
+    )
+    val animatedFontSize by animateIntAsState(
+        targetValue = when {
+            isCollapsed -> 22
+            else -> 28
+        }
+    )
+    val animatedIconSize by animateDpAsState(
+        targetValue = when {
+            isCollapsed -> 24.dp
+            else -> 28.dp
+        }
+    )
+
     ScaffoldWithElevatedTopBarOnListScroll(
         topBar = {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 20.dp)
-                    .padding(vertical = 30.dp)
+                    .padding(vertical = animateVerticalTopBarPadding)
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -77,7 +103,9 @@ internal fun HomeScreenContent(
                 ) {
                     Text(
                         text = "All Coins",
-                        style = MaterialTheme.typography.h1
+                        style = MaterialTheme.typography.h1.copy(
+                            fontSize = animatedFontSize.sp
+                        )
                     )
 
                     IconButton(
@@ -85,7 +113,7 @@ internal fun HomeScreenContent(
                         onClick = onSearchClicked
                     ) {
                         Icon(
-                            modifier = Modifier.size(28.dp),
+                            modifier = Modifier.size(animatedIconSize),
                             painter = painterResource(id = R.drawable.ic_search_24),
                             contentDescription = null,
                             tint = green
@@ -95,6 +123,16 @@ internal fun HomeScreenContent(
             }
         }
     ) { paddingValues, lazyListState ->
+        LaunchedEffect(lazyListState.firstVisibleItemIndex) {
+            if (lazyListState.firstVisibleItemIndex > lastFirstVisibleItemIndex) {
+                isCollapsed = true
+            } else if (lazyListState.firstVisibleItemIndex < lastFirstVisibleItemIndex) {
+                isCollapsed = false
+            }
+
+            lastFirstVisibleItemIndex = lazyListState.firstVisibleItemIndex
+        }
+
         CoinPagingList(
             paddingValues = paddingValues,
             lazyListState = lazyListState,
