@@ -153,10 +153,13 @@ fun CoinPagingList(
     onRefreshLoadStateChange: (LoadState) -> Unit,
     onCoinClicked: (String?) -> Unit
 ) {
+    var hasStartedLoading by remember { mutableStateOf(false) }
     val shimmer = rememberShimmer(shimmerBounds = ShimmerBounds.View)
 
     LaunchedEffect(coins.loadState.refresh) {
-        if (coins.loadState.refresh != refreshLoadState) {
+        if (!hasStartedLoading && coins.loadState.refresh == LoadState.Loading) {
+            hasStartedLoading = true
+        } else if (coins.loadState.refresh != refreshLoadState && hasStartedLoading) {
             onRefreshLoadStateChange.invoke(coins.loadState.refresh)
         }
     }
