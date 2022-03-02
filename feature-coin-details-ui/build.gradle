@@ -6,6 +6,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -51,6 +52,8 @@ dependencies {
 
     implementation project(":feature-coin-details-domain")
     implementation project(":feature-home-domain")
+
+    implementation project(":feature-coin-details-data")
 
     implementation Libs.AndroidX.coreKtx
     implementation Libs.AndroidX.appCompat

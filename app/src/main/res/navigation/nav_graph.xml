@@ -4,23 +4,12 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
 
+    <include app:graph="@navigation/coin_details_nav_graph" />
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.patrykkosieradzki.cryptobag.home.HomeFragment"
         android:label="HomeFragment" >
-        <action
-            android:id="@+id/action_homeFragment_to_coinDetailsFragment"
-            app:destination="@id/coinDetailsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/coinDetailsFragment"
-        android:name="com.patrykkosieradzki.cryptobag.feature.coindetails.ui.CoinDetailsFragment"
-        android:label="CoinDetailsFragment">
-        <argument
-            android:name="coinId"
-            app:argType="string" />
-        <deepLink
-            android:id="@+id/deepLink"
-            app:uri="cryptobag://coinDetails?coinId={coinId}" />
-    </fragment>
+
 </navigation>
