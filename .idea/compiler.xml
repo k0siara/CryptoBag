@@ -7,6 +7,8 @@
       <module name="CryptoBag.common-remote" target="11" />
       <module name="CryptoBag.common-ui-compose" target="11" />
       <module name="CryptoBag.common-ui-imageloading" target="11" />
+      <module name="CryptoBag.feature-coin-details-data" target="11" />
+      <module name="CryptoBag.feature-coin-details-ui" target="11" />
       <module name="CryptoBag.feature-home-data" target="11" />
       <module name="CryptoBag.feature-home-ui" target="11" />
       <module name="CryptoBag.utils-android" target="11" />

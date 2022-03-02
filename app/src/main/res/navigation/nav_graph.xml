@@ -4,8 +4,12 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
 
+    <include app:graph="@navigation/coin_details_nav_graph" />
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.patrykkosieradzki.cryptobag.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+    </fragment>
+
 </navigation>

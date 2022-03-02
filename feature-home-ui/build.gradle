@@ -6,6 +6,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -44,7 +45,6 @@ android {
     }
 }
 
-
 hilt {
     enableAggregatingTask = true
 }
@@ -53,6 +53,7 @@ dependencies {
     implementation project(':utils')
     implementation project(':common-ui-compose')
     implementation project(':common-ui-imageloading')
+
     implementation project(':feature-home-data')
     implementation project(':feature-home-domain')
 
@@ -69,6 +70,9 @@ dependencies {
 
     implementation "androidx.fragment:fragment-ktx:1.4.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0-alpha02"
+
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
 
     // Dependency injection
     implementation "com.google.dagger:hilt-android:2.37"
