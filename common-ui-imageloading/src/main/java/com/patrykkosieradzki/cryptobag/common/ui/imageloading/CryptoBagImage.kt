@@ -13,7 +13,7 @@ fun CryptoBagImage(
     url: String?
 ) {
     Image(
-        modifier = Modifier.size(50.dp),
+        modifier = modifier,
         painter = rememberImagePainter(url),
         contentDescription = null
     )
